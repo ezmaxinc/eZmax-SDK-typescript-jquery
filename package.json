@@ -1,7 +1,7 @@
 {
-    "name": "ezmaxinc-sdk-typescrit-jquery",
-    "version": "1.0.27",
-    "description": "JQuery client for ezmaxinc-sdk-typescrit-jquery",
+    "name": "@ezmaxinc/ezmax-sdk-typescript-jquery",
+    "version": "1.0.28",
+    "description": "JQuery client for @ezmaxinc/ezmax-sdk-typescript-jquery",
     "main": "api.js",
     "scripts": {
         "build": "tsc"
