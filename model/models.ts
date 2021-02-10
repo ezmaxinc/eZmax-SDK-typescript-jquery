@@ -88,6 +88,7 @@ export * from './FranchisereferalincomeCreateObjectV1Response';
 export * from './FranchisereferalincomeCreateObjectV1ResponseMPayload';
 export * from './FranchisereferalincomeRequest';
 export * from './FranchisereferalincomeRequestCompound';
+export * from './GlobalCustomerGetEndpointV1Response';
 export * from './MultilingualApikeyDescription';
 export * from './PhoneRequest';
 export * from './UserCreateEzsignuserV1Request';

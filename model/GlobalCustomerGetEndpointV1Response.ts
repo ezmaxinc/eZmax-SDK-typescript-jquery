@@ -13,13 +13,12 @@
 import * as models from './models';
 
 /**
- * Response for the /1/object/ezsignfoldersignerassociation/createObject API Request
+ * Response for the /1/customer/{pksCustomerCode}/endpoint API Request
  */
-export interface EzsignfoldersignerassociationCreateObjectV1Response {
-    mPayload: models.EzsignfoldersignerassociationCreateObjectV1ResponseMPayload;
-
-    objDebugPayload?: models.CommonResponseObjDebugPayload;
-
-    objDebug?: models.CommonResponseObjDebug;
+export interface GlobalCustomerGetEndpointV1Response {
+    /**
+     * The endpoint\'s URL
+     */
+    sEndpointURL: string;
 
 }

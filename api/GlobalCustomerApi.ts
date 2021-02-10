@@ -19,7 +19,7 @@ import { Configuration } from '../configuration';
 /* tslint:disable:no-unused-variable member-ordering */
 
 
-export class ObjectFranchisebrokerApi {
+export class GlobalCustomerApi {
     protected basePath = 'https://prod.api.appcluster01.ca-central-1.ezmax.com/rest';
     public defaultHeaders: Array<string> = [];
     public defaultExtraJQueryAjaxSettings?: JQueryAjaxSettings = undefined;
@@ -47,26 +47,26 @@ export class ObjectFranchisebrokerApi {
     }
 
     /**
-     * Get the list of Franchisebrokers to be used in a dropdown or autocomplete control.
-     * @summary Retrieve Franchisebrokers and IDs
-     * @param sSelector The type of Franchisebrokers to return
-     * @param sQuery Allow to filter on the option value
+     * Retrieve the customer\'s specific server endpoint where to send requests. This will help locate the proper region (ie: sInfrastructureregionCode) and the proper environment (ie: sInfrastructureenvironmenttypeDescription) where the customer\'s data is stored.
+     * @summary Get customer endpoint
+     * @param pksCustomerCode The customer code assigned to your account
+     * @param sInfrastructureproductCode The infrastructure product Code  If undefined, \&quot;appcluster01\&quot; is assumed
      */
-    public franchisebrokerGetAutocompleteV1(sSelector: 'Active' | 'All', sQuery?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
-    { response: JQueryXHR; body: models.CommonGetAutocompleteV1Response;  },
+    public globalCustomerGetEndpointV1(pksCustomerCode: string, sInfrastructureproductCode?: 'appcluster01' | 'ezsignuser', extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
+    { response: JQueryXHR; body: models.GlobalCustomerGetEndpointV1Response;  },
     { response: JQueryXHR; errorThrown: string }
     > {
-        let localVarPath = this.basePath + '/1/object/franchisebroker/getAutocomplete/{sSelector}'.replace('{' + 'sSelector' + '}', encodeURIComponent(String(sSelector)));
+        let localVarPath = this.basePath + '/1/customer/{pksCustomerCode}/endpoint'.replace('{' + 'pksCustomerCode' + '}', encodeURIComponent(String(pksCustomerCode)));
 
         let queryParameters: any = {};
         let headerParams: any = {};
-        // verify required parameter 'sSelector' is not null or undefined
-        if (sSelector === null || sSelector === undefined) {
-            throw new Error('Required parameter sSelector was null or undefined when calling franchisebrokerGetAutocompleteV1.');
+        // verify required parameter 'pksCustomerCode' is not null or undefined
+        if (pksCustomerCode === null || pksCustomerCode === undefined) {
+            throw new Error('Required parameter pksCustomerCode was null or undefined when calling globalCustomerGetEndpointV1.');
         }
 
-        if (sQuery !== null && sQuery !== undefined) {
-            queryParameters['sQuery'] = <string><any>sQuery;
+        if (sInfrastructureproductCode !== null && sInfrastructureproductCode !== undefined) {
+            queryParameters['sInfrastructureproductCode'] = <string><any>sInfrastructureproductCode;
         }
 
         localVarPath = localVarPath + "?" + $.param(queryParameters);
@@ -105,11 +105,11 @@ export class ObjectFranchisebrokerApi {
         }
 
         let dfd = $.Deferred<
-            { response: JQueryXHR; body: models.CommonGetAutocompleteV1Response;  },
+            { response: JQueryXHR; body: models.GlobalCustomerGetEndpointV1Response;  },
             { response: JQueryXHR; errorThrown: string }
         >();
         $.ajax(requestOptions).then(
-            (data: models.CommonGetAutocompleteV1Response, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: models.GlobalCustomerGetEndpointV1Response, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve({response: jqXHR, body: data}),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject({response: xhr, errorThrown: errorThrown})
