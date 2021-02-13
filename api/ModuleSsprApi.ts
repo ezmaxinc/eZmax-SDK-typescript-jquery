@@ -19,7 +19,7 @@ import { Configuration } from '../configuration';
 /* tslint:disable:no-unused-variable member-ordering */
 
 
-export class ObjectActivesessionApi {
+export class ModuleSsprApi {
     protected basePath = 'https://prod.api.appcluster01.ca-central-1.ezmax.com/rest';
     public defaultHeaders: Array<string> = [];
     public defaultExtraJQueryAjaxSettings?: JQueryAjaxSettings = undefined;
@@ -47,14 +47,14 @@ export class ObjectActivesessionApi {
     }
 
     /**
-     * Retrieve the details about the current activesession
-     * @summary Get Current Activesession
+     * This endpoint returns an email with the username(s) matching the email address provided in case of forgotten username
+     * @summary Remind of forgotten username(s)
      */
-    public activesessionGetCurrentV1(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
-    { response: JQueryXHR; body: models.ActivesessionGetCurrentV1Response;  },
+    public ssprRemindUsernamesV1(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
+    { response: JQueryXHR; body?: any;  },
     { response: JQueryXHR; errorThrown: string }
     > {
-        let localVarPath = this.basePath + '/1/object/activesession/getCurrent';
+        let localVarPath = this.basePath + '/1/module/sspr/remindUsernames';
 
         let queryParameters: any = {};
         let headerParams: any = {};
@@ -77,7 +77,7 @@ export class ObjectActivesessionApi {
 
         let requestOptions: JQueryAjaxSettings = {
             url: localVarPath,
-            type: 'GET',
+            type: 'POST',
             headers: headerParams,
             processData: false
         };
@@ -95,11 +95,11 @@ export class ObjectActivesessionApi {
         }
 
         let dfd = $.Deferred<
-            { response: JQueryXHR; body: models.ActivesessionGetCurrentV1Response;  },
+            { response: JQueryXHR; body?: any;  },
             { response: JQueryXHR; errorThrown: string }
         >();
         $.ajax(requestOptions).then(
-            (data: models.ActivesessionGetCurrentV1Response, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve({response: jqXHR, body: data}),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject({response: xhr, errorThrown: errorThrown})

@@ -1,6 +1,7 @@
 .openapi-generator-ignore
 README.md
 api/GlobalCustomerApi.ts
+api/ModuleSsprApi.ts
 api/ModuleUserApi.ts
 api/ObjectActivesessionApi.ts
 api/ObjectApikeyApi.ts
