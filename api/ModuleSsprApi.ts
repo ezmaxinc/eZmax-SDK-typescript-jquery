@@ -47,21 +47,28 @@ export class ModuleSsprApi {
     }
 
     /**
-     * This endpoint returns an email with the username(s) matching the email address provided in case of forgotten username
-     * @summary Remind of forgotten username(s)
+     * This endpoint sends an email with a link to reset the user\'s password.  sEmailAddress must be set if eUserTypeSSPR = EzsignUser  sUserLoginname must be set if eUserTypeSSPR = Native
+     * @summary Reset Password Request
+     * @param ssprResetPasswordRequestV1Request 
      */
-    public ssprRemindUsernamesV1(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
+    public ssprResetPasswordRequestV1(ssprResetPasswordRequestV1Request: models.SsprResetPasswordRequestV1Request, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
     { response: JQueryXHR; body?: any;  },
     { response: JQueryXHR; errorThrown: string }
     > {
-        let localVarPath = this.basePath + '/1/module/sspr/remindUsernames';
+        let localVarPath = this.basePath + '/1/module/sspr/resetPasswordRequest/';
 
         let queryParameters: any = {};
         let headerParams: any = {};
+        // verify required parameter 'ssprResetPasswordRequestV1Request' is not null or undefined
+        if (ssprResetPasswordRequestV1Request === null || ssprResetPasswordRequestV1Request === undefined) {
+            throw new Error('Required parameter ssprResetPasswordRequestV1Request was null or undefined when calling ssprResetPasswordRequestV1.');
+        }
+
 
         localVarPath = localVarPath + "?" + $.param(queryParameters);
         // to determine the Content-Type header
         let consumes: string[] = [
+            'application/json'
         ];
 
         // to determine the Accept header
@@ -75,6 +82,8 @@ export class ModuleSsprApi {
         }
 
 
+        headerParams['Content-Type'] = 'application/json';
+
         let requestOptions: JQueryAjaxSettings = {
             url: localVarPath,
             type: 'POST',
@@ -82,6 +91,291 @@ export class ModuleSsprApi {
             processData: false
         };
 
+        requestOptions.data = JSON.stringify(ssprResetPasswordRequestV1Request);
+        if (headerParams['Content-Type']) {
+            requestOptions.contentType = headerParams['Content-Type'];
+        }
+
+        if (extraJQueryAjaxSettings) {
+            requestOptions = (<any>Object).assign(requestOptions, extraJQueryAjaxSettings);
+        }
+
+        if (this.defaultExtraJQueryAjaxSettings) {
+            requestOptions = (<any>Object).assign(requestOptions, this.defaultExtraJQueryAjaxSettings);
+        }
+
+        let dfd = $.Deferred<
+            { response: JQueryXHR; body?: any;  },
+            { response: JQueryXHR; errorThrown: string }
+        >();
+        $.ajax(requestOptions).then(
+            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+                dfd.resolve({response: jqXHR, body: data}),
+            (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
+                dfd.reject({response: xhr, errorThrown: errorThrown})
+        );
+        return dfd.promise();
+    }
+
+    /**
+     * This endpoint resets the user\'s password.  sEmailAddress must be set if eUserTypeSSPR = EzsignUser  sUserLoginname must be set if eUserTypeSSPR = Native
+     * @summary Reset Password
+     * @param ssprResetPasswordV1Request 
+     */
+    public ssprResetPasswordV1(ssprResetPasswordV1Request: models.SsprResetPasswordV1Request, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
+    { response: JQueryXHR; body?: any;  },
+    { response: JQueryXHR; errorThrown: string }
+    > {
+        let localVarPath = this.basePath + '/1/module/sspr/resetPassword';
+
+        let queryParameters: any = {};
+        let headerParams: any = {};
+        // verify required parameter 'ssprResetPasswordV1Request' is not null or undefined
+        if (ssprResetPasswordV1Request === null || ssprResetPasswordV1Request === undefined) {
+            throw new Error('Required parameter ssprResetPasswordV1Request was null or undefined when calling ssprResetPasswordV1.');
+        }
+
+
+        localVarPath = localVarPath + "?" + $.param(queryParameters);
+        // to determine the Content-Type header
+        let consumes: string[] = [
+            'application/json'
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (Authorization) required
+        if (this.configuration.apiKey) {
+            headerParams['Authorization'] = this.configuration.apiKey;
+        }
+
+
+        headerParams['Content-Type'] = 'application/json';
+
+        let requestOptions: JQueryAjaxSettings = {
+            url: localVarPath,
+            type: 'POST',
+            headers: headerParams,
+            processData: false
+        };
+
+        requestOptions.data = JSON.stringify(ssprResetPasswordV1Request);
+        if (headerParams['Content-Type']) {
+            requestOptions.contentType = headerParams['Content-Type'];
+        }
+
+        if (extraJQueryAjaxSettings) {
+            requestOptions = (<any>Object).assign(requestOptions, extraJQueryAjaxSettings);
+        }
+
+        if (this.defaultExtraJQueryAjaxSettings) {
+            requestOptions = (<any>Object).assign(requestOptions, this.defaultExtraJQueryAjaxSettings);
+        }
+
+        let dfd = $.Deferred<
+            { response: JQueryXHR; body?: any;  },
+            { response: JQueryXHR; errorThrown: string }
+        >();
+        $.ajax(requestOptions).then(
+            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+                dfd.resolve({response: jqXHR, body: data}),
+            (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
+                dfd.reject({response: xhr, errorThrown: errorThrown})
+        );
+        return dfd.promise();
+    }
+
+    /**
+     * This endpoint returns an email with the username(s) matching the email address provided in case of forgotten username
+     * @summary Send username(s)
+     * @param ssprSendUsernamesV1Request 
+     */
+    public ssprSendUsernamesV1(ssprSendUsernamesV1Request: models.SsprSendUsernamesV1Request, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
+    { response: JQueryXHR; body?: any;  },
+    { response: JQueryXHR; errorThrown: string }
+    > {
+        let localVarPath = this.basePath + '/1/module/sspr/sendUsernames';
+
+        let queryParameters: any = {};
+        let headerParams: any = {};
+        // verify required parameter 'ssprSendUsernamesV1Request' is not null or undefined
+        if (ssprSendUsernamesV1Request === null || ssprSendUsernamesV1Request === undefined) {
+            throw new Error('Required parameter ssprSendUsernamesV1Request was null or undefined when calling ssprSendUsernamesV1.');
+        }
+
+
+        localVarPath = localVarPath + "?" + $.param(queryParameters);
+        // to determine the Content-Type header
+        let consumes: string[] = [
+            'application/json'
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (Authorization) required
+        if (this.configuration.apiKey) {
+            headerParams['Authorization'] = this.configuration.apiKey;
+        }
+
+
+        headerParams['Content-Type'] = 'application/json';
+
+        let requestOptions: JQueryAjaxSettings = {
+            url: localVarPath,
+            type: 'POST',
+            headers: headerParams,
+            processData: false
+        };
+
+        requestOptions.data = JSON.stringify(ssprSendUsernamesV1Request);
+        if (headerParams['Content-Type']) {
+            requestOptions.contentType = headerParams['Content-Type'];
+        }
+
+        if (extraJQueryAjaxSettings) {
+            requestOptions = (<any>Object).assign(requestOptions, extraJQueryAjaxSettings);
+        }
+
+        if (this.defaultExtraJQueryAjaxSettings) {
+            requestOptions = (<any>Object).assign(requestOptions, this.defaultExtraJQueryAjaxSettings);
+        }
+
+        let dfd = $.Deferred<
+            { response: JQueryXHR; body?: any;  },
+            { response: JQueryXHR; errorThrown: string }
+        >();
+        $.ajax(requestOptions).then(
+            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+                dfd.resolve({response: jqXHR, body: data}),
+            (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
+                dfd.reject({response: xhr, errorThrown: errorThrown})
+        );
+        return dfd.promise();
+    }
+
+    /**
+     * This endpoint sends an email with a link to unlock the user account.  sEmailAddress must be set if eUserTypeSSPR = EzsignUser  sUserLoginname must be set if eUserTypeSSPR = Native
+     * @summary Unlock Account Request
+     * @param ssprUnlockAccountRequestV1Request 
+     */
+    public ssprUnlockAccountRequestV1(ssprUnlockAccountRequestV1Request: models.SsprUnlockAccountRequestV1Request, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
+    { response: JQueryXHR; body?: any;  },
+    { response: JQueryXHR; errorThrown: string }
+    > {
+        let localVarPath = this.basePath + '/1/module/sspr/unlockAccountRequest';
+
+        let queryParameters: any = {};
+        let headerParams: any = {};
+        // verify required parameter 'ssprUnlockAccountRequestV1Request' is not null or undefined
+        if (ssprUnlockAccountRequestV1Request === null || ssprUnlockAccountRequestV1Request === undefined) {
+            throw new Error('Required parameter ssprUnlockAccountRequestV1Request was null or undefined when calling ssprUnlockAccountRequestV1.');
+        }
+
+
+        localVarPath = localVarPath + "?" + $.param(queryParameters);
+        // to determine the Content-Type header
+        let consumes: string[] = [
+            'application/json'
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (Authorization) required
+        if (this.configuration.apiKey) {
+            headerParams['Authorization'] = this.configuration.apiKey;
+        }
+
+
+        headerParams['Content-Type'] = 'application/json';
+
+        let requestOptions: JQueryAjaxSettings = {
+            url: localVarPath,
+            type: 'POST',
+            headers: headerParams,
+            processData: false
+        };
+
+        requestOptions.data = JSON.stringify(ssprUnlockAccountRequestV1Request);
+        if (headerParams['Content-Type']) {
+            requestOptions.contentType = headerParams['Content-Type'];
+        }
+
+        if (extraJQueryAjaxSettings) {
+            requestOptions = (<any>Object).assign(requestOptions, extraJQueryAjaxSettings);
+        }
+
+        if (this.defaultExtraJQueryAjaxSettings) {
+            requestOptions = (<any>Object).assign(requestOptions, this.defaultExtraJQueryAjaxSettings);
+        }
+
+        let dfd = $.Deferred<
+            { response: JQueryXHR; body?: any;  },
+            { response: JQueryXHR; errorThrown: string }
+        >();
+        $.ajax(requestOptions).then(
+            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+                dfd.resolve({response: jqXHR, body: data}),
+            (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
+                dfd.reject({response: xhr, errorThrown: errorThrown})
+        );
+        return dfd.promise();
+    }
+
+    /**
+     * This endpoint unlocks the user account.  sEmailAddress must be set if eUserTypeSSPR = EzsignUser  sUserLoginname must be set if eUserTypeSSPR = Native
+     * @summary Unlock Account
+     * @param ssprUnlockAccountV1Request 
+     */
+    public ssprUnlockAccountV1(ssprUnlockAccountV1Request: models.SsprUnlockAccountV1Request, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
+    { response: JQueryXHR; body?: any;  },
+    { response: JQueryXHR; errorThrown: string }
+    > {
+        let localVarPath = this.basePath + '/1/module/sspr/unlockAccount';
+
+        let queryParameters: any = {};
+        let headerParams: any = {};
+        // verify required parameter 'ssprUnlockAccountV1Request' is not null or undefined
+        if (ssprUnlockAccountV1Request === null || ssprUnlockAccountV1Request === undefined) {
+            throw new Error('Required parameter ssprUnlockAccountV1Request was null or undefined when calling ssprUnlockAccountV1.');
+        }
+
+
+        localVarPath = localVarPath + "?" + $.param(queryParameters);
+        // to determine the Content-Type header
+        let consumes: string[] = [
+            'application/json'
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (Authorization) required
+        if (this.configuration.apiKey) {
+            headerParams['Authorization'] = this.configuration.apiKey;
+        }
+
+
+        headerParams['Content-Type'] = 'application/json';
+
+        let requestOptions: JQueryAjaxSettings = {
+            url: localVarPath,
+            type: 'POST',
+            headers: headerParams,
+            processData: false
+        };
+
+        requestOptions.data = JSON.stringify(ssprUnlockAccountV1Request);
         if (headerParams['Content-Type']) {
             requestOptions.contentType = headerParams['Content-Type'];
         }

@@ -94,6 +94,7 @@ model/FieldEEzsignfolderSendreminderfrequency.ts
 model/FieldEEzsignfolderStep.ts
 model/FieldEPhoneType.ts
 model/FieldEUserType.ts
+model/FieldEUserTypeSSPR.ts
 model/FranchisereferalincomeCreateObjectV1Request.ts
 model/FranchisereferalincomeCreateObjectV1Response.ts
 model/FranchisereferalincomeCreateObjectV1ResponseMPayload.ts
@@ -102,6 +103,11 @@ model/FranchisereferalincomeRequestCompound.ts
 model/GlobalCustomerGetEndpointV1Response.ts
 model/MultilingualApikeyDescription.ts
 model/PhoneRequest.ts
+model/SsprResetPasswordRequestV1Request.ts
+model/SsprResetPasswordV1Request.ts
+model/SsprSendUsernamesV1Request.ts
+model/SsprUnlockAccountRequestV1Request.ts
+model/SsprUnlockAccountV1Request.ts
 model/UNUSEDEzsigndocumentEditObjectV1Request.ts
 model/UNUSEDEzsigndocumentEditObjectV1Response.ts
 model/UNUSEDEzsignfolderEditObjectV1Request.ts
