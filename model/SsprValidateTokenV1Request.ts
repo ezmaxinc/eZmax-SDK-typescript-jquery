@@ -13,37 +13,34 @@
 import * as models from './models';
 
 /**
- * A Contact Object
+ * Request for the /1/module/sspr/validateToken API Request
  */
-export interface ContactRequest {
+export interface SsprValidateTokenV1Request {
     /**
-     * The unique ID of the Contacttitle.  Valid values:  |Value|Description| |-|-| |1|Ms.| |2|Mr.| |4|(Blank)| |5|Me (For Notaries)|
+     * The customer code assigned to your account
      */
-    fkiContacttitleID: number;
+    pksCustomerCode: string;
 
     /**
      * The unique ID of the Language.  Valid values:  |Value|Description| |-|-| |1|French| |2|English|
      */
     fkiLanguageID: number;
 
-    /**
-     * The First name of the contact
-     */
-    sContactFirstname: string;
+    eUserTypeSSPR: models.FieldEUserTypeSSPR;
 
     /**
-     * The Last name of the contact
+     * The email address.
      */
-    sContactLastname: string;
+    sEmailAddress?: string;
 
     /**
-     * The Company name of the contact
+     * The Login name of the User.
      */
-    sContactCompany: string;
+    sUserLoginname?: string;
 
     /**
-     * The Birth Date of the contact
+     * Hex Encoded Secret SSPR token
      */
-    dtContactBirthdate?: string;
+    binUserSSPRtoken: string;
 
 }
